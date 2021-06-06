@@ -1,3 +1,6 @@
+#Projekt zaliczeniowy python
+#Baza filmów
+
 import json 
 import re
 opcja = 1
