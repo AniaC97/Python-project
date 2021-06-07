@@ -13,6 +13,56 @@ def wyswietlanie_wszystkich_filmow ():   # OPCJA 2
     for film in baza_filmow:
         film = json.loads(film)
         print(film['tytul'])
+        
+def edytowanie_filmow(rodzaj_opcji, film_do_edycji): # OPCJA 3
+    if rodzaj_opcji == 'A' or rodzaj_opcji == 'a':
+        nowy_rezyser = input('Podaj nowego reżysera: ')
+        for i in range(0, len(baza_filmow)):
+            film = json.loads(baza_filmow[i])
+            if film_do_edycji == film['tytul']:
+                baza_filmow.pop(i)  #removes item at the given index from the list
+
+                film['rezyser'] = nowy_rezyser
+                film_nowy_rezyser = json.dumps(film)
+                baza_filmow.append(film_nowy_rezyser)
+                break
+
+    elif rodzaj_opcji == 'B' or rodzaj_opcji == 'b':
+        nowy_gatunek = input('Podaj nowy gatunek: ')
+        for i in range(0, len(baza_filmow)):
+            film = json.loads(baza_filmow[i])
+            if film_do_edycji == film['tytul']:
+                baza_filmow.pop(i)
+
+                film['gatunek'] = nowy_gatunek
+                film_nowy_gatunek = json.dumps(film)
+                baza_filmow.append(film_nowy_gatunek)
+                break
+
+
+    elif rodzaj_opcji == 'C' or rodzaj_opcji == 'c':
+        nowi_aktorzy = input('Podaj nowych aktorów: ')
+        for i in range(0, len(baza_filmow)):
+            film = json.loads(baza_filmow[i])
+            if film_do_edycji == film['tytul']:
+                baza_filmow.pop(i)
+
+                film['aktorzy'] = nowi_aktorzy
+                film_nowi_aktorzy = json.dumps(film)
+                baza_filmow.append(film_nowi_aktorzy)
+                break
+
+    elif rodzaj_opcji == 'D' or rodzaj_opcji == 'd':
+        nowy_URL = input('Podaj nowy adres zwiastunu: ')
+        for i in range(0, len(baza_filmow)):
+            film = json.loads(baza_filmow[i])
+            if film_do_edycji == film['tytul']:
+                baza_filmow.pop(i)
+
+                film['adres_URL'] = nowy_URL
+                film_nowy_URL = json.dumps(film)
+                baza_filmow.append(film_nowy_URL)
+                break        
 
 def usuwanie_filmow_z_systemu (usun_film): # OPCJA 4
     for i in range(0, len(baza_filmow)):
@@ -36,7 +86,6 @@ def wyswietl_szczegolowe_dane_o_filmie (tytul_filmu, rodzaj_opcji): # OPCJA 5
 
     elif rodzaj_opcji == 'B' or rodzaj_opcji == 'b':
 
-        # info_gatunek = input('Podaj nazwę filmu: ')
         for i in range(0, len(baza_filmow)):
             film = json.loads(baza_filmow[i])
 
@@ -47,7 +96,7 @@ def wyswietl_szczegolowe_dane_o_filmie (tytul_filmu, rodzaj_opcji): # OPCJA 5
 
 
     elif rodzaj_opcji == 'C' or rodzaj_opcji == 'c':
-        #info_aktorzy = input('Podaj nazwę filmu: ')
+        
         for i in range(0, len(baza_filmow)):
             film = json.loads(baza_filmow[i])
 
@@ -58,7 +107,7 @@ def wyswietl_szczegolowe_dane_o_filmie (tytul_filmu, rodzaj_opcji): # OPCJA 5
 
 
     elif rodzaj_opcji == 'D' or rodzaj_opcji == 'd':
-        #info_zwiastun = input('Podaj nazwę filmu: ')
+        
         for i in range(0, len(baza_filmow)):
             film = json.loads(baza_filmow[i])
 
@@ -129,55 +178,7 @@ def wyswietlanie_informacji_o_filmie(film_do_wys_info): # OPCJA 10
                   '\n' + (('Aktorzy: ') + film['aktorzy']), '\n' + (('Link do zwiastunu: ') + film['adres_URL']))
             break
 
-def edytowanie_filmow(rodzaj_opcji, film_do_edycji): # OPCJA 11
-    if rodzaj_opcji == 'A' or rodzaj_opcji == 'a':
-        nowy_rezyser = input('Podaj nowego reżysera: ')
-        for i in range(0, len(baza_filmow)):
-            film = json.loads(baza_filmow[i])
-            if film_do_edycji == film['tytul']:
-                baza_filmow.pop(i)  #removes item at the given index from the list
 
-                film['rezyser'] = nowy_rezyser
-                film_nowy_rezyser = json.dumps(film)
-                baza_filmow.append(film_nowy_rezyser)
-                break
-
-    elif rodzaj_opcji == 'B' or rodzaj_opcji == 'b':
-        nowy_gatunek = input('Podaj nowy gatunek: ')
-        for i in range(0, len(baza_filmow)):
-            film = json.loads(baza_filmow[i])
-            if film_do_edycji == film['tytul']:
-                baza_filmow.pop(i)
-
-                film['gatunek'] = nowy_gatunek
-                film_nowy_gatunek = json.dumps(film)
-                baza_filmow.append(film_nowy_gatunek)
-                break
-
-
-    elif rodzaj_opcji == 'C' or rodzaj_opcji == 'c':
-        nowi_aktorzy = input('Podaj nowych aktorów: ')
-        for i in range(0, len(baza_filmow)):
-            film = json.loads(baza_filmow[i])
-            if film_do_edycji == film['tytul']:
-                baza_filmow.pop(i)
-
-                film['aktorzy'] = nowi_aktorzy
-                film_nowi_aktorzy = json.dumps(film)
-                baza_filmow.append(film_nowi_aktorzy)
-                break
-
-    elif rodzaj_opcji == 'D' or rodzaj_opcji == 'd':
-        nowy_URL = input('Podaj nowy adres zwiastunu: ')
-        for i in range(0, len(baza_filmow)):
-            film = json.loads(baza_filmow[i])
-            if film_do_edycji == film['tytul']:
-                baza_filmow.pop(i)
-
-                film['adres_URL'] = nowy_URL
-                film_nowy_URL = json.dumps(film)
-                baza_filmow.append(film_nowy_URL)
-                break
 
 
 while opcja != '0':
@@ -214,6 +215,15 @@ while opcja != '0':
     elif opcja == '2':
 
         wyswietlanie_wszystkich_filmow()
+        
+        
+    elif opcja == '3':
+        print('Wybierz opcje: ', '\n' 'A = reżyser', '\n' 'B = gatunek', '\n' 'C = aktorzy',
+              '\n' 'D = adres URL zwiastunu')
+        rodzaj_opcji = input('Twoja opcja: ')
+        film_do_edycji = input('Tytuł filmu: ')
+
+        edytowanie_filmow(rodzaj_opcji, film_do_edycji)
 
 
     elif opcja == '4':
@@ -263,15 +273,7 @@ while opcja != '0':
 
         wyswietlanie_informacji_o_filmie(film_do_wys_info)
 
-#dopisz ocenę
 
-    elif opcja == '11':
-        print('Wybierz opcje: ', '\n' 'A = reżyser', '\n' 'B = gatunek', '\n' 'C = aktorzy',
-              '\n' 'D = adres URL zwiastunu')
-        rodzaj_opcji = input('Twoja opcja: ')
-        film_do_edycji = input('Tytuł filmu: ')
-
-        edytowanie_filmow(rodzaj_opcji, film_do_edycji)
 
 
 
